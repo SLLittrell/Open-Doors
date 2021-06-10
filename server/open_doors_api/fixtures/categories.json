@@ -1,0 +1,67 @@
+[
+    {
+        "model": "open_doors_api.category",
+        "pk": 1,
+        "fields": {
+            "label": "Social Story"
+            
+        }
+    },
+    {
+        "model": "open_doors_api.category",
+        "pk": 2,
+        "fields": {
+            "label": "Visual Schedules"
+            
+        }
+    },
+    {
+        "model": "open_doors_api.category",
+        "pk": 3,
+        "fields": {
+            "label": "Tips"
+            
+        }
+    },
+    {
+        "model": "open_doors_api.category",
+        "pk": 4,
+        "fields": {
+            "label": "Experiences"
+            
+        }
+    },
+    {
+        "model": "open_doors_api.category",
+        "pk": 5,
+        "fields": {
+            "label": "Struggles"
+            
+        }
+    },
+    {
+        "model": "open_doors_api.category",
+        "pk": 6,
+        "fields": {
+            "label": "Accomplishments"
+            
+        }
+    },
+    {
+        "model": "open_doors_api.category",
+        "pk": 7,
+        "fields": {
+            "label": "Programs"
+            
+        }
+    },
+    {
+        "model": "open_doors_api.category",
+        "pk": 8,
+        "fields": {
+            "label": "Resources"
+            
+        }
+    }
+
+]
