@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "open_doors_server",
+            "database": "db.sqlite3"
+        }
+    ],
+    "python.pythonPath": "/home/sllittrell/.local/share/virtualenvs/Open-Doors-0thz6N10/bin/python"
+}

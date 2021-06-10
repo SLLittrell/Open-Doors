@@ -1,0 +1,18 @@
+[
+    {
+        "model": "open_doors_api.openuser",
+        "pk": 1,
+        "fields": {
+            "user" : 1
+            
+        }
+    },
+    {
+        "model": "open_doors_api.openuser",
+        "pk": 2,
+        "fields": {
+            "user" : 2
+            
+        }
+    }
+]

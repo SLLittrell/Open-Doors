@@ -51,4 +51,4 @@ class OpenUserSerializer(serializers.ModelSerializer):
     user = UserSerializer(many=False)
     class Meta:
         model = OpenUser
-        fields = ('id', 'user', 'created_on')
+        fields = ('id', 'user')
