@@ -18,11 +18,12 @@ from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
 from rest_framework import routers
-from open_doors_api.views import (OpenUserView, PostView)
+from open_doors_api.views import (OpenUserView, PostView, CategoryView)
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'users', OpenUserView, 'user')
 router.register(r'posts', PostView, 'post')
+router.register(r'categories', CategoryView, 'category')
 
 urlpatterns = [
     path('', include(router.urls)),
