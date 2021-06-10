@@ -7,5 +7,9 @@
             "database": "db.sqlite3"
         }
     ],
-    "python.pythonPath": "/home/sllittrell/.local/share/virtualenvs/Open-Doors-0thz6N10/bin/python"
+    "python.pythonPath": "/home/sllittrell/.local/share/virtualenvs/Open-Doors-0thz6N10/bin/python",
+    "python.linting.pylintEnabled": true,
+    "python.linting.pylintArgs": [
+        "--django-settings-module=levelup.settings",
+    ]
 }
