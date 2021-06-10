@@ -19,7 +19,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-SECRET_KEY = env("SECRET_KEY")
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-(glv3nuigce1yeztt+ppki*f%v0p33pb1791-anb&_ulxee$%)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,11 +37,33 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
+    'open_doors_api',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10
+}
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'http://127.0.0.1:3000'
+)
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -122,7 +145,3 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-import environ
-env = environ.Env()
-environ.Env.read_env()
