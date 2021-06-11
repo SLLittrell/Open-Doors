@@ -20,11 +20,19 @@ class StoryView(ViewSet):
 
     def create(self, request):
         """Ensure client can create a story"""
-        lines = []
+        Page1 = []
+        title_image = []
+        Page2 = []
+        Page3 = []
+        Page4 = []
+        Page5 = []
+        Page6 = []
         title = request.data['title']
+        image = request.data['image']
         text = request.data['text']
-        lines.append(title)
-        lines.append(text)
+        Page1.append(title)
+        title_image.append(image)
+        Page2.append(text)
         
 
 
@@ -34,12 +42,14 @@ class StoryView(ViewSet):
         textob.setTextOrigin(inch, inch)
         textob.setFont("Helvetica", 14)
 
-        for line in lines:
+        for line in Page1:
             textob.textLine(line)
+
             
         pdf.drawText(textob)
     ########Image######
-
+        for image in title_image:
+            pdf.drawImage(image, 500, 100)
     #########Drawstring(text)##########
 
 
