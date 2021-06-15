@@ -67,10 +67,10 @@ class StoryView(ViewSet):
         # pdf: bytes = buffer.getvalue()
         return FileResponse(buffer, as_attachment=True, filename='story.pdf')
 
-        
+        user = OpenUser.objects.get(user=request.auth.user)
         story = SocialStory()
         story.title = titlepage
-        story.user = User.objects.get(id=request.auth.user_id)
+        story.user = user.user
         story.pdf.save('story.pdf', story, save=False)
         
     
@@ -92,7 +92,7 @@ class StoryOpenUserSerializer(serializers.ModelSerializer):
 
 class StorySerializer(serializers.ModelSerializer):
 
-    user = StoryUserSerializer(many=False)
+    user = StoryOpenUserSerializer(many=False)
     class Meta:
         model = SocialStory
         fields = ['user', 'title', 'pdf']
