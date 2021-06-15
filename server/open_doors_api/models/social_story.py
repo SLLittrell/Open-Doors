@@ -4,8 +4,8 @@ from django.core.files import File
 # from .utils import render_to_pdf
 
 class SocialStory(models.Model):
-    title = models.CharField(max_length=50)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)
     pdf = models.FileField(upload_to='pdf/', null=True, blank=True)
 
 

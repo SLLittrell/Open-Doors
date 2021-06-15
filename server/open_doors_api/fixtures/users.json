@@ -21,7 +21,7 @@
         "model": "auth.user",
         "pk": 2,
         "fields": {
-            "password": "pbkdf2_sha256$260000$LVIjA58Ruk1gj9jhFD663S$DmepTX9IXb+FLJQzJIQ+dTdtBsJr1UsTrtEdf3Mmnzk=",
+            "password": "pbkdf2_sha256$216000$qMRH8szID7Z8$Vljya2V3XfruOHuvx1hGz9ZyKg4bxbw7rc2WO0gTR7I=",
             "last_login": null,
             "is_superuser": false,
             "username": "milky",
