@@ -30,7 +30,7 @@ class PostView(ViewSet):
         post.visual_schedule = request.data['visual_schedule']
         post.content = request.data['content']
         post.approved = request.data['approved']
-        post.user = user
+        post.user = user.user
     
 
       
