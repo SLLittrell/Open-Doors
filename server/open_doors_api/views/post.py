@@ -7,6 +7,7 @@ from rest_framework import serializers
 from rest_framework import status
 from django.contrib.auth.models import User
 from rest_framework.decorators import action
+import datetime
 from open_doors_api.models import Post, Category, OpenUser
 
 
@@ -24,7 +25,6 @@ class PostView(ViewSet):
         post = Post()
         post.title = request.data['title']
         post.category = category
-        post.publication_date = request.data['publication_date']
         post.image_url = request.data['image_url']
         post.social_story = request.data['social_story']
         post.visual_schedule = request.data['visual_schedule']
