@@ -28,6 +28,7 @@ router.register(r'categories', CategoryView, 'category')
 router.register(r'stories', StoryView, 'story')
 router.register(r'profiles', ProfileView, 'profile')
 
+
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
