@@ -6,6 +6,7 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import inch 
 from reportlab.lib import colors
 from reportlab.platypus import SimpleDocTemplate, flowables
+import base64
 
 from django.core.files.base import ContentFile
 from django.http import HttpResponse
@@ -121,6 +122,18 @@ class StoryView(ViewSet):
         
         buffer.seek(0)
     
+        response =buffer.getvalue()
+
+        file_data = ContentFile(response)
+        user = OpenUser.objects.get(user=request.auth.user)
+        story = SocialStory()
+        story.title = titlepage
+        story.user = user.user
+        story.pdf = file_data
+
+        story.save()
+
+        
         return FileResponse(buffer, as_attachment=True, filename='story.pdf')
         
 
@@ -158,12 +171,7 @@ class StoryView(ViewSet):
     # FileResponse(pdf, filename='story.pdf')
 
 
-    # pdf: bytes = buffer.getvalue()
-    # pdf_file = FileResponse(buffer, as_attachment=True, filename='')
-    
 
-   
-        #  
     
         
     def retrieve(self, request, pk=None):
