@@ -4,4 +4,5 @@ from .post import PostView
 from .category import CategoryView
 from .story import StoryView
 from .stories import SocialStoryView
+from .schedule import VisualScheduleView
 from .profile import ProfileView

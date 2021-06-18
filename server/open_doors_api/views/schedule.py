@@ -1,4 +1,3 @@
-from server.open_doors_api.models.visual_schedule import VisualSchedule
 from django.core.exceptions import ValidationError
 from rest_framework import status
 from django.http import HttpResponseServerError
@@ -9,7 +8,7 @@ from rest_framework import status
 from django.contrib.auth.models import User
 from rest_framework.decorators import action
 import datetime
-from open_doors_api.models import SocialStory, OpenUser
+from open_doors_api.models import VisualSchedule, OpenUser
 
 
 class VisualScheduleView(ViewSet):
@@ -17,7 +16,7 @@ class VisualScheduleView(ViewSet):
         """Ensure client can create a story"""
         schedule =VisualSchedule()
         user = user = OpenUser.objects.get(user=request.auth.user)
-        schedule.user =user
+        schedule.user =user.user
         schedule.title = (request.data['title'])
         schedule.activity_1 = (request.data['activity_1'])
         schedule.image_1 = (request.data['image_1'])
@@ -53,9 +52,9 @@ class VisualScheduleView(ViewSet):
         Returns:
             Response -- JSON serialized list of games
         """
-        story = VisualSchedule.objects.all()
+        schedule = VisualSchedule.objects.all()
         serializer = ScheduleSerializer(
-            story, many=True, context={'request': request})
+            schedule, many=True, context={'request': request})
         return Response(serializer.data)
     
     def retrieve(self,request, pk=None):
@@ -64,9 +63,9 @@ class VisualScheduleView(ViewSet):
             Response -- JSON serialized list of games
         """
         try:
-            story = VisualSchedule.objects.get(pk=pk)
+            schedule = VisualSchedule.objects.get(pk=pk)
             serializer = ScheduleSerializer(
-                story, context={'request': request})
+                schedule, context={'request': request})
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
@@ -109,4 +108,4 @@ class ScheduleSerializer(serializers.ModelSerializer):
                             'activity_9', 
                             'image_9', 
                             'activity_10', 
-                            'image_10 ']
+                            'image_10']
