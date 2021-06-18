@@ -48,6 +48,28 @@ class SocialStoryView(ViewSet):
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
 
+    def list(self,request):
+        """Handle GET requests to games resource
+        Returns:
+            Response -- JSON serialized list of games
+        """
+        story = SocialStory.objects.all()
+        serializer = StorySerializer(
+            story, many=True, context={'request': request})
+        return Response(serializer.data)
+    
+    def retrieve(self,request, pk=None):
+        """Handle GET requests to games resource
+        Returns:
+            Response -- JSON serialized list of games
+        """
+        try:
+            story = SocialStory.objects.get(pk=pk)
+            serializer = StorySerializer(
+                story, context={'request': request})
+            return Response(serializer.data)
+        except Exception as ex:
+            return HttpResponseServerError(ex)
 
 class StoryUserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -67,7 +89,7 @@ class StorySerializer(serializers.ModelSerializer):
     user = StoryUserSerializer(many=False)
     class Meta:
         model = SocialStory
-        fields = ['user','publication_date', 'titlepage',
+        fields = ['id','user','publication_date', 'titlepage',
                          'title_image',
                          'page_1_text',
                          'page_1_image',

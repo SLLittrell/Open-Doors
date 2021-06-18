@@ -172,6 +172,12 @@ class StoryView(ViewSet):
 
 
 
+    # def generate_obj_pdf(instance_id):
+#      obj = SocialStory.objects.get(id=instance_id)
+#      context = {'instance': obj}
+#      pdf = render_to_pdf('your/pdf/template.html', context)
+#      filename = "YourPDF_Order{}.pdf" %(obj.slug)
+#      obj.pdf.save(filename, File(BytesIO(pdf.content)))
     
         
     def retrieve(self, request, pk=None):
