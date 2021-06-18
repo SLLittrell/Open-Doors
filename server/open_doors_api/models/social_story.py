@@ -5,6 +5,7 @@ from django.core.files import File
 
 class SocialStory(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    publication_date = models.DateTimeField(auto_now_add=True)
     titlepage = models.TextField()
     title_image = models.TextField()
     page_1_text = models.TextField()

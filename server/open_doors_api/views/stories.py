@@ -11,11 +11,12 @@ import datetime
 from open_doors_api.models import SocialStory, OpenUser
 
 
-class PostView(ViewSet):
+class SocialStoryView(ViewSet):
     def create(self, request):
         """Ensure client can create a story"""
         user = OpenUser.objects.get(user=request.auth.user)
         story =SocialStory()
+        story.user =user.user
         story.titlepage = (request.data['title'])
         story.title_image = (request.data['title_image'])
         story.page_1_text = (request.data['page_1_text'])
@@ -66,4 +67,25 @@ class StorySerializer(serializers.ModelSerializer):
     user = StoryUserSerializer(many=False)
     class Meta:
         model = SocialStory
-        fields = ['user', 'title', 'pdf']
+        fields = ['user','publication_date', 'titlepage',
+                         'title_image',
+                         'page_1_text',
+                         'page_1_image',
+                         'page_2_text',
+                         'page_2_image',
+                         'page_3_text',
+                         'page_3_image',
+                         'page_4_text',
+                         'page_4_image',
+                         'page_5_text',
+                         'page_5_image',
+                         'page_6_text',
+                         'page_6_image',
+                         'page_7_text',
+                         'page_7_image',
+                         'page_8_text',
+                         'page_8_image',
+                         'page_9_text',
+                         'page_9_image',
+                         'page_10_text',
+                         'page_10_image']
