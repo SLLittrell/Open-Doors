@@ -18,15 +18,19 @@ from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
 from rest_framework import routers
-from open_doors_api.views import (OpenUserView, PostView, CategoryView, StoryView, ProfileView)
+from open_doors_api.views import (OpenUserView, PostView, CategoryView, 
+                                SocialStoryView, ProfileView,
+                                VisualScheduleView)
 
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'users', OpenUserView, 'user')
 router.register(r'posts', PostView, 'post')
 router.register(r'categories', CategoryView, 'category')
-router.register(r'stories', StoryView, 'story')
+router.register(r'stories', SocialStoryView, 'story')
 router.register(r'profiles', ProfileView, 'profile')
+router.register(r'schedules', VisualScheduleView, 'schedule')
+
 
 urlpatterns = [
     path('', include(router.urls)),

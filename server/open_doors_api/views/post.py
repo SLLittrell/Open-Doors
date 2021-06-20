@@ -68,7 +68,7 @@ class PostView(ViewSet):
         post.publication_date = request.data['publication_date']
         post.image_url = request.data['image_url']
         post.content = request.data['content']
-        post.user = user
+        post.user = user.user
 
         category = Category.objects.get(pk=request.data["category_id"])
         post.category = category
