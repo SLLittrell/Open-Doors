@@ -17,6 +17,7 @@ class SocialStoryView(ViewSet):
         user = OpenUser.objects.get(user=request.auth.user)
         story =SocialStory()
         story.user =user.user
+        story.attraction =(request.data['attraction'])
         story.titlepage = (request.data['title'])
         story.title_image = (request.data['title_image'])
         story.page_1_text = (request.data['page_1_text'])
@@ -89,7 +90,7 @@ class StorySerializer(serializers.ModelSerializer):
     user = StoryUserSerializer(many=False)
     class Meta:
         model = SocialStory
-        fields = ['id','user','publication_date', 'titlepage',
+        fields = ['id','user','publication_date', 'attraction','titlepage',
                          'title_image',
                          'page_1_text',
                          'page_1_image',
