@@ -31,7 +31,7 @@ class UserSerializer(serializers.ModelSerializer):
     """JSON serializer for user's  related Django user"""
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'username')
+        fields = ('id','first_name', 'last_name', 'username', 'is_staff')
 
 
 class OpenUserSerializer(serializers.ModelSerializer):
