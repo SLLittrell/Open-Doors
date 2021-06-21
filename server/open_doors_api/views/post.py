@@ -8,7 +8,7 @@ from rest_framework import status
 from django.contrib.auth.models import User
 from rest_framework.decorators import action
 import datetime
-from open_doors_api.models import Post, Category, OpenUser
+from open_doors_api.models import Post, Category, OpenUser, SocialStory, VisualSchedule
 
 
 class PostView(ViewSet):
@@ -21,13 +21,15 @@ class PostView(ViewSet):
 
         user = OpenUser.objects.get(user=request.auth.user)
         category = Category.objects.get(pk=request.data["category_id"])
+        story = SocialStory.objects.get(pk=request.data["social_story"])
+        schedule = VisualSchedule.objects.get(pk=request.data["visual_schedule"])
 
         post = Post()
         post.title = request.data['title']
         post.category = category
         post.image_url = request.data['image_url']
-        post.social_story = request.data['social_story']
-        post.visual_schedule = request.data['visual_schedule']
+        post.social_story = story
+        post.visual_schedule = schedule
         post.content = request.data['content']
         post.approved = request.data['approved']
         post.user = user.user
@@ -68,6 +70,7 @@ class PostView(ViewSet):
         post.publication_date = request.data['publication_date']
         post.image_url = request.data['image_url']
         post.content = request.data['content']
+        post.approved = request.data['approved']
         post.user = user.user
 
         category = Category.objects.get(pk=request.data["category_id"])
@@ -131,5 +134,5 @@ class PostSerializer(serializers.ModelSerializer):
     user = PostUserSerializer(many=False)
     class Meta:
         model = Post
-        fields = ('id', 'title', 'publication_date', 'image_url', 'content', 'category', 'user', 'social_story_id', 'visual_schedule_id')
+        fields = ('id', 'title', 'publication_date', 'image_url', 'content', 'category', 'user', 'social_story', 'visual_schedule', 'approved')
         depth = 1
