@@ -11,6 +11,5 @@ class Post(models.Model):
     image_url = models.CharField(max_length=250)
     social_story = models.ForeignKey("SocialStory", on_delete=models.CASCADE, null=True, blank=True)
     visual_schedule = models.ForeignKey("VisualSchedule", on_delete=models.CASCADE, null=True, blank=True)
-    # image_url = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100)
     content = models.TextField()
     approved = models.BooleanField()

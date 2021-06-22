@@ -18,24 +18,27 @@ class PostView(ViewSet):
         Returns:
             Response -- JSON serialized post instance
         """
-
+        # Get user, category, schedule, and story instances for post
         user = OpenUser.objects.get(user=request.auth.user)
         category = Category.objects.get(pk=request.data["category_id"])
-        story = SocialStory.objects.get(pk=request.data["social_story"])
-        schedule = VisualSchedule.objects.get(pk=request.data["visual_schedule"])
 
         post = Post()
         post.title = request.data['title']
         post.category = category
         post.image_url = request.data['image_url']
-        post.social_story = story
-        post.visual_schedule = schedule
         post.content = request.data['content']
         post.approved = request.data['approved']
         post.user = user.user
+        # Give users the option to input a story or schedule 
+        if request.data['visual_schedule'] is not None:
+            post.visual_schedule= VisualSchedule.objects.get(pk=request.data["visual_schedule"])
+             
+        if request.data['social_story'] is not None:
+            post.social_story= SocialStory.objects.get(pk=request.data["social_story"])
+           
     
 
-      
+    #   Try/Except try to save new post instance and use serializer to convert to json
         try:
             post.save()
             serializer = PostSerializer(post, context={'request': request})
@@ -51,6 +54,7 @@ class PostView(ViewSet):
         Returns:
             Response -- JSON serialized game instance
         """
+        #   Try/Except try to get post instance and use serializer to convert to json
         try:
             post = Post.objects.get(pk=pk)
             serializer = PostSerializer(post, context={'request': request})
@@ -73,11 +77,27 @@ class PostView(ViewSet):
         post.approved = request.data['approved']
         post.user = user.user
 
+        if post.visual_schedule is None:
+            try: post.visual_schedule = VisualSchedule.objects.get(pk=request.data["visual_schedule"])
+            except: post.visual_schedule = None
+        elif request.data['visual_schedule'] is not None:
+            post.visual_schedule = VisualSchedule.objects.get(pk=request.data["visual_schedule"])
+        if post.social_story is None:
+            try: post.social_story = SocialStory.objects.get(pk=request.data["social_story"])
+            except: post.social_story = None
+        elif request.data['social_story'] is not None:
+         post.social_story = SocialStory.objects.get(pk=request.data["social_story"])
+          
+
         category = Category.objects.get(pk=request.data["category_id"])
         post.category = category
-        post.save()
 
-        return Response({}, status=status.HTTP_204_NO_CONTENT)
+        # Try/Except try to save new post instance and use serializer to convert to json
+        try:
+            post.save()
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+        except Exception as ex:
+            return HttpResponseServerError(ex)
 
     def destroy(self, request, pk=None):
         """Handle DELETE requests for a single post

@@ -18,7 +18,7 @@ class SocialStoryView(ViewSet):
         story =SocialStory()
         story.user =user.user
         story.attraction =(request.data['attraction'])
-        story.titlepage = (request.data['title'])
+        story.titlepage = (request.data['titlepage'])
         story.title_image = (request.data['title_image'])
         story.page_1_text = (request.data['page_1_text'])
         story.page_1_image = (request.data['page_1_image'])
@@ -71,6 +71,63 @@ class SocialStoryView(ViewSet):
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
+
+    def update(self, request, pk=None):
+        """Handle PUT requests for a game
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+        user = OpenUser.objects.get(user=request.auth.user)
+        story =SocialStory.objects.get(pk=pk)
+        story.user =user.user
+        story.attraction =(request.data['attraction'])
+        story.titlepage = (request.data['titlepage'])
+        story.title_image = (request.data['title_image'])
+        story.page_1_text = (request.data['page_1_text'])
+        story.page_1_image = (request.data['page_1_image'])
+        story.page_2_text = (request.data['page_2_text'])
+        story.page_2_image = (request.data['page_2_image'])
+        story.page_3_text = (request.data['page_3_text'])
+        story.page_3_image = (request.data['page_3_image'])
+        story.page_4_text = (request.data['page_4_text'])
+        story.page_4_image = (request.data['page_4_image'])
+        story.page_5_text = (request.data['page_5_text'])
+        story.page_5_image = (request.data['page_5_image'])
+        story.page_6_text = (request.data['page_6_text'])
+        story.page_6_image = (request.data['page_6_image'])
+        story.page_7_text = (request.data['page_7_text'])
+        story.page_7_image = (request.data['page_7_image'])
+        story.page_8_text = (request.data['page_8_text'])
+        story.page_8_image = (request.data['page_8_image'])
+        story.page_9_text = (request.data['page_9_text'])
+        story.page_9_image = (request.data['page_9_image'])
+        story.page_10_text = (request.data['page_10_text'])
+        story.page_10_image = (request.data['page_10_image'])
+
+        # Try/Except try to save new post instance and use serializer to convert to json
+        try:
+            story.save()
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+        except Exception as ex:
+            return HttpResponseServerError(ex)
+
+    def destroy(self, request, pk=None):
+        """Handle DELETE requests for a single post
+        Returns:
+            Response -- 200, 404, or 500 status code
+        """
+        try:
+            story = SocialStory.objects.get(pk=pk)
+            story.delete()
+
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+
+        except SocialStory.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+
+        except Exception as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 class StoryUserSerializer(serializers.ModelSerializer):
     class Meta:
