@@ -4,7 +4,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from django.views.decorators.csrf import csrf_exempt
-
+from open_doors_api.models import OpenUser
 
 @csrf_exempt
 def login_user(request):
@@ -54,6 +54,14 @@ def register_user(request):
         first_name=req_body['first_name'],
         last_name=req_body['last_name'],
     )
+
+     # Now save the extra info in the OpenUser table
+    open_user = OpenUser.objects.create(
+        user=new_user
+    )
+
+    # Commit the user to the database by saving it
+    open_user.save()
 
 
     # Use the REST Framework's token generator on the new user account
