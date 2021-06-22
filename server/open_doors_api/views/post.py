@@ -18,7 +18,7 @@ class PostView(ViewSet):
         Returns:
             Response -- JSON serialized post instance
         """
-
+        # Get user, category, schedule, and story instances for post
         user = OpenUser.objects.get(user=request.auth.user)
         category = Category.objects.get(pk=request.data["category_id"])
         story = SocialStory.objects.get(pk=request.data["social_story"])
@@ -35,7 +35,7 @@ class PostView(ViewSet):
         post.user = user.user
     
 
-      
+    #   Try/Except try to save new post instance and use serializer to convert to json
         try:
             post.save()
             serializer = PostSerializer(post, context={'request': request})
@@ -51,6 +51,7 @@ class PostView(ViewSet):
         Returns:
             Response -- JSON serialized game instance
         """
+        #   Try/Except try to get post instance and use serializer to convert to json
         try:
             post = Post.objects.get(pk=pk)
             serializer = PostSerializer(post, context={'request': request})
@@ -64,20 +65,30 @@ class PostView(ViewSet):
         Returns:
             Response -- Empty body with 204 status code
         """
+        story = SocialStory.objects.get(pk=request.data["social_story"])
         user = OpenUser.objects.get(user=request.auth.user)
         post = Post.objects.get(pk=pk)
         post.title = request.data['title']
         post.publication_date = request.data['publication_date']
+        post.social_story = story
         post.image_url = request.data['image_url']
         post.content = request.data['content']
         post.approved = request.data['approved']
         post.user = user.user
 
+        if request.data['visual_schedule'] is not None:
+         schedule = VisualSchedule.objects.get(pk=request.data["visual_schedule"])
+         post.visual_schedule = schedule
+
         category = Category.objects.get(pk=request.data["category_id"])
         post.category = category
-        post.save()
 
-        return Response({}, status=status.HTTP_204_NO_CONTENT)
+        # Try/Except try to save new post instance and use serializer to convert to json
+        try:
+            post.save()
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+        except Exception as ex:
+            return HttpResponseServerError(ex)
 
     def destroy(self, request, pk=None):
         """Handle DELETE requests for a single post

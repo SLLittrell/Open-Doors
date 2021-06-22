@@ -10,6 +10,7 @@ from open_doors_api.models import Category
 class CategoryView(ViewSet):
 
     def create(self, request):
+        """Handle POST request to create a category"""
         category = Category()
         category.label = request.data['label']
 
@@ -28,6 +29,7 @@ class CategoryView(ViewSet):
         return Response({}, status=status.HTTP_204_NO_CONTENT)
 
     def destroy(self, request, pk=None):
+        """Handle DELETE to delete a category"""
         try:
             category = Category.objects.get(pk=pk)
             category.delete()
@@ -37,7 +39,7 @@ class CategoryView(ViewSet):
             return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def list(self, request):
-        """Handle GET requests to get all game types
+        """Handle GET requests to get all Categories
         Returns:
             Response -- JSON serialized list of game types
         """
