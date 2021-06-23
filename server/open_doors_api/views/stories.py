@@ -17,7 +17,6 @@ class SocialStoryView(ViewSet):
         user = OpenUser.objects.get(user=request.auth.user)
         story =SocialStory()
         story.user =user.user
-        story.attraction =(request.data['attraction'])
         story.titlepage = (request.data['titlepage'])
         story.title_image = (request.data['title_image'])
         story.page_1_text = (request.data['page_1_text'])
@@ -30,16 +29,29 @@ class SocialStoryView(ViewSet):
         story.page_4_image = (request.data['page_4_image'])
         story.page_5_text = (request.data['page_5_text'])
         story.page_5_image = (request.data['page_5_image'])
-        story.page_6_text = (request.data['page_6_text'])
-        story.page_6_image = (request.data['page_6_image'])
-        story.page_7_text = (request.data['page_7_text'])
-        story.page_7_image = (request.data['page_7_image'])
-        story.page_8_text = (request.data['page_8_text'])
-        story.page_8_image = (request.data['page_8_image'])
-        story.page_9_text = (request.data['page_9_text'])
-        story.page_9_image = (request.data['page_9_image'])
-        story.page_10_text = (request.data['page_10_text'])
-        story.page_10_image = (request.data['page_10_image'])
+        if request.data['attraction'] is not None:
+            story.attraction =request.data["attraction"]
+        if request.data['page_6_text'] is not None:
+            story.page_6_text =request.data["page_6_text"]
+        if request.data['page_6_image'] is not None:
+            story.page_6_image =request.data["page_6_image"]
+        if request.data['page_7_text'] is not None:
+            story.page_7_text =request.data["page_7_text"]
+        if request.data['page_7_image'] is not None:
+            story.page_7_image =request.data["page_7_image"]
+        if request.data['page_8_text'] is not None:
+            story.page_8_text =request.data["page_8_text"]
+        if request.data['page_8_image'] is not None:
+            story.page_8_image =request.data["page_8_image"]
+        if request.data['page_9_text'] is not None:
+            story.page_9_text =request.data["page_9_text"]
+        if request.data['page_9_image'] is not None:
+            story.page_9_image =request.data["page_9_image"]
+        if request.data['page_10_text'] is not None:
+            story.page_10_text =request.data["page_10_text"]
+        if request.data['page_10_image'] is not None:
+            story.page_10_image =request.data["page_10_image"]
+
 
         try:
             story.save()
@@ -80,7 +92,6 @@ class SocialStoryView(ViewSet):
         user = OpenUser.objects.get(user=request.auth.user)
         story =SocialStory.objects.get(pk=pk)
         story.user =user.user
-        story.attraction =(request.data['attraction'])
         story.titlepage = (request.data['titlepage'])
         story.title_image = (request.data['title_image'])
         story.page_1_text = (request.data['page_1_text'])
@@ -93,16 +104,61 @@ class SocialStoryView(ViewSet):
         story.page_4_image = (request.data['page_4_image'])
         story.page_5_text = (request.data['page_5_text'])
         story.page_5_image = (request.data['page_5_image'])
-        story.page_6_text = (request.data['page_6_text'])
-        story.page_6_image = (request.data['page_6_image'])
-        story.page_7_text = (request.data['page_7_text'])
-        story.page_7_image = (request.data['page_7_image'])
-        story.page_8_text = (request.data['page_8_text'])
-        story.page_8_image = (request.data['page_8_image'])
-        story.page_9_text = (request.data['page_9_text'])
-        story.page_9_image = (request.data['page_9_image'])
-        story.page_10_text = (request.data['page_10_text'])
-        story.page_10_image = (request.data['page_10_image'])
+        if story.attraction is None:
+            try: story.attraction = request.data["attraction"]
+            except: story.attraction = None
+        elif request.data['attraction'] is not None:
+            story.attraction = request.data["attraction"]
+        if story.page_6_text is None:
+            try: story.page_6_text = request.data["page_6_text"]
+            except: story.page_6_text = None
+        elif request.data['page_6_text'] is not None:
+            story.page_6_text = request.data["page_6_text"]
+        if story.page_6_image is None:
+            try: story.page_6_image = request.data["page_6_image"]
+            except: story.page_6_image = None
+        elif request.data['page_6_image'] is not None:
+            story.page_6_image = request.data["page_6_image"]
+        if story.page_7_text is None:
+            try: story.page_7_text = request.data["page_7_text"]
+            except: story.page_7_text = None
+        elif request.data['page_7_text'] is not None:
+            story.page_7_text = request.data["page_7_text"]
+        if story.page_7_image is None:
+            try: story.page_7_image = request.data["page_7_image"]
+            except: story.page_7_image = None
+        elif request.data['page_7_image'] is not None:
+            story.page_7_image = request.data["page_7_image"]
+        if story.page_8_text is None:
+            try: story.page_8_text = request.data["page_8_text"]
+            except: story.page_8_text = None
+        elif request.data['page_8_text'] is not None:
+            story.page_8_text = request.data["page_8_text"]
+        if story.page_8_image is None:
+            try: story.page_8_image = request.data["page_8_image"]
+            except: story.page_8_image = None
+        elif request.data['page_8_image'] is not None:
+            story.page_8_image = request.data["page_8_image"]
+        if story.page_9_text is None:
+            try: story.page_9_text = request.data["page_9_text"]
+            except: story.page_9_text = None
+        elif request.data['page_9_text'] is not None:
+            story.page_9_text = request.data["page_9_text"]
+        if story.page_9_image is None:
+            try: story.page_9_image = request.data["page_9_image"]
+            except: story.page_9_image = None
+        elif request.data['page_9_image'] is not None:
+            story.page_9_image = request.data["page_9_image"]
+        if story.page_10_text is None:
+            try: story.page_10_text = request.data["page_10_text"]
+            except: story.page_10_text = None
+        elif request.data['page_10_text'] is not None:
+            story.page_10_text = request.data["page_10_text"]
+        if story.page_10_image is None:
+            try: story.page_10_image = request.data["page_10_image"]
+            except: story.page_10_image = None
+        elif request.data['page_10_image'] is not None:
+            story.page_10_image = request.data["page_10_image"]
 
         # Try/Except try to save new post instance and use serializer to convert to json
         try:
