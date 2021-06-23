@@ -1,6 +1,6 @@
 [
     {
-        "model": "open_doors_api.socialstories",
+        "model": "open_doors_api.socialstory",
         "pk": 1,
         "fields": {
             "user": 1,
