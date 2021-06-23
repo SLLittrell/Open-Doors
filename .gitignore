@@ -165,3 +165,4 @@ sandbox.sql
 /migrations
 settings.py
 .pylintrc
+.env
