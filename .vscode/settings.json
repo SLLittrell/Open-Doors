@@ -11,5 +11,8 @@
     "python.linting.pylintEnabled": true,
     "python.linting.pylintArgs": [
         "--django-settings-module=levelup.settings",
+    ],
+    "cSpell.ignoreWords": [
+        "getenv"
     ]
 }
