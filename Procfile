@@ -1,1 +1,1 @@
-web: gunicorn open_doors.wsgi --log-file -
+web: gunicorn server/open_doors.wsgi --log-file -
