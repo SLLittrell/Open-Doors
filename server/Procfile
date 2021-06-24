@@ -1,0 +1,1 @@
+web: gunicorn open_doors.wsgi --log-file -
