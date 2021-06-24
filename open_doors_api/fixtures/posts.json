@@ -11,18 +11,5 @@
             "content": "This is an awesome camp, Check it out https://www.nashvillezoo.org/camp!",
             "approved": true
         }
-    },
-    {
-        "model": "open_doors_api.post",
-        "pk": 2,
-        "fields": {
-            "user" : 1,
-            "category": 7,
-            "title": "Nashville Children sensory Opera!!",
-            "publication_date":"2021-06-15T21:28:50.800036Z",
-            "image_url": "https://images.squarespace-cdn.com/content/v1/523741ace4b05227e9571e60/1578933886831-YVRO7VL27DTTO5T8N7FN/ke17ZwdGBToddI8pDm48kPK4l-D7HkFlhwjagvPrQch7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QHyNOqBUUEtDDsRWrJLTmzRdow2MKoDNGJuOcT_AGWcXuoeKhPzkODcGr355HGQ3wQ3ueX1ezvY1xNiS3EXZj/Sensory5.jpg?format=500w",
-            "content": "This is such a great program, and a new opera every year!",
-            "approved": true
-        }
     }
 ]
