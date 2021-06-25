@@ -33,10 +33,9 @@ class OpenUserView(ViewSet):
         Returns:
             Response -- Empty body with 204 status code
         """
-        user = User.objects.get(pk=pk)
+        user = OpenUser.objects.get(pk=pk)
 
-        user.is_staff=request.data['is_staff']
-        
+        auth_user=User.objects.get(pk=request.data["user"])
         user.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
