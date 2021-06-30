@@ -49,12 +49,6 @@ login using fixture data
 - Admin users have access to approve posts before all users can view it. 
 
 
-### ERD
-![Open Doors ERD (1)]()
-
-### Wireframe
-![Open Doors WireFrame]()
-
 ### Support
 Fill out a support ticket if you discover any major bugs to address. 
 
