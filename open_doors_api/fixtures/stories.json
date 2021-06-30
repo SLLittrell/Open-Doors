@@ -1,0 +1,33 @@
+[
+    {
+        "model": "open_doors_api.socialstory",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "publication_date": "2021-06-18T17:37:35.698257Z",
+            "titlepage": "Nashville Zoo",
+            "title_image": "https://media-exp1.licdn.com/dms/image/C4E1BAQEXiygWvxZztg/company-background_10000/0/1545925008405?e=2159024400&v=beta&t=8ByHIKpEI4QEM-Zdf3HhGvuIvmpwuX--5JtTLCZ81uA",
+            "page_1_text": "Today We are going to the Zoo.",
+            "page_1_image": "https://www.gannett-cdn.com/presto/2020/06/15/PNAS/2b9f94fb-e0ad-4a51-878e-f798c59d28ca-nashvillzoo-1a.jpg?crop=4320,2430,x1,y200&width=3200&height=1800&format=pjpg&auto=webp",
+            "page_2_text": "When we get there we will get our tickets.",
+            "page_2_image": "https://media.bizj.us/view/img/9454182/ticket-booth*1024xx900-506-0-58.jpg",
+            "page_3_text": "Sometimes there are lines but that's okay.",
+            "page_3_image": "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/a/40/a408820d-d383-5aaa-9fb3-459d23f57d5f/59653878b0f95.image.jpg?resize=1200%2C819",
+            "page_4_text": "When we get our tickets, we will go out on the zoo trail to see some animals.",
+            "page_4_image": "https://geckogroup.com/wp-content/uploads/2012/12/AndeanBear_GeckoGroup_Website1-1.jpg",
+            "page_5_text": "Sometimes animals are resting and not on exhibit, but that is okay, we can learn about them from the signs",
+            "page_5_image": "http://kidallergytravel.com/wp-content/uploads/2019/11/IMG_6866-3-768x576.jpeg",
+            "page_6_text": "Taking a break for a rest and snack is a good idea.",
+            "page_6_image": "https://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/8/1f/81f36e7a-6df2-5172-976d-835f38c935d3/596538771348f.image.jpg?resize=1024%2C646",
+            "page_7_text": "Some animals have a funny smell, that's okay we can pass by and say \"Hello!\".",
+            "page_7_image": "https://i.imgur.com/foCEgAO.jpg",
+            "page_8_text": "Some animals like to make lots of noise, we can look for a quieter area to visit if that happens.",
+            "page_8_image": "https://pbs.twimg.com/media/DdfWVh0VMAAqIIx.jpg",
+            "page_9_text": "Let's say bye to the animals as we walk to the exit.",
+            "page_9_image": "https://www.nashvillezoo.org/assets/2147/12_critter_-_sperka.jpg",
+            "page_10_text": "Seeing the animals is fun, but it's time to go home.",
+            "page_10_image": "https://media.istockphoto.com/photos/portrait-of-a-waving-red-panda-picture-id91819731?k=6&m=91819731&s=612x612&w=0&h=ODyeBj5HqphcP2yDpaZFWk1KfxfdIm7TuG-9NDKpb5I="
+        }
+        
+    }
+]

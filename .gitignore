@@ -163,5 +163,7 @@ yarn-error.log*
 db.sqlite3
 sandbox.sql
 /migrations
-settings.py
 .pylintrc
+.env
+key.py
+/server
