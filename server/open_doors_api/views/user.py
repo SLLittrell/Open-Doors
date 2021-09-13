@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 
 class OpenUserView(ViewSet):
     def list(self, request):
+        
         users = OpenUser.objects.all()
         res = OpenUserSerializer(users, many=True)
         return Response(res.data)
